@@ -8,7 +8,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 const provider = new GoogleAuthProvider();
 
 const Register = () => {
-    const { user, googleSignIn } = useContext(AuthContext);
+    const { user, googleSignIn, createUser } = useContext(AuthContext);
     console.log(user)
     const handleRegister = e => {
         e.preventDefault();
@@ -18,7 +18,16 @@ const Register = () => {
         const password = form.password.value;
         console.log(email, password, name);
         form.reset();
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
+
     const handleGoogle = () => {
         googleSignIn(provider)
             .then(result => {
