@@ -1,0 +1,15 @@
+.brand {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.route {
+    text-decoration: none;
+    margin-left: 10px;
+    color: white;
+}
+
+.route:hover {
+    color: rgba(255, 255, 255, 0.699);
+}
