@@ -4,12 +4,12 @@ import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
-
+const githubProvider = new GithubAuthProvider();
 const Register = () => {
-    const { user, googleSignIn, createUser } = useContext(AuthContext);
+    const { user, googleSignIn, createUser, updateUserProfile, githubSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -22,22 +22,42 @@ const Register = () => {
         const url = form.url.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password, name, url);
+        console.log(email, password, name,);
         form.reset();
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast.success('Registaion Successful')
+                handleUpdateUserProfile(name, url)
                 navigate(from, { replace: true })
             })
             .catch(error => {
                 toast.error(error.message);
             })
     }
-
+    const handleUpdateUserProfile = (name, url) => {
+        const profile = {
+            displayName: name,
+            photoURL: url
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     const handleGoogle = () => {
         googleSignIn(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
+    }
+    const handleGithub = () => {
+        githubSignIn(githubProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user)
@@ -82,7 +102,7 @@ const Register = () => {
                     <Button onClick={handleGoogle} variant="primary" className='w-100 mb-3' type="submit">
                         Google
                     </Button>
-                    <Button variant="primary" className='w-100' type="submit">
+                    <Button onClick={handleGithub} variant="primary" className='w-100' type="submit">
                         GitHub
                     </Button>
                 </div>

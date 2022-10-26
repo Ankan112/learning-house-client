@@ -5,12 +5,12 @@ import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
-
+const githubProvider = new GithubAuthProvider();
 const Login = () => {
-    const { googleSignIn, logIn } = useContext(AuthContext)
+    const { googleSignIn, logIn, githubSignIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -34,6 +34,17 @@ const Login = () => {
     }
     const handleGoogle = () => {
         googleSignIn(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
+    }
+    const handleGithub = () => {
+        githubSignIn(githubProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user)
@@ -70,7 +81,7 @@ const Login = () => {
                     <Button onClick={handleGoogle} variant="primary" className='w-100 mb-3' type="submit">
                         Google
                     </Button>
-                    <Button variant="primary" className='w-100' type="submit">
+                    <Button onClick={handleGithub} variant="primary" className='w-100' type="submit">
                         GitHub
                     </Button>
                 </div>

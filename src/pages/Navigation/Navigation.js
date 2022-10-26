@@ -22,7 +22,7 @@ const Navigation = () => {
 
                     </Nav>
                     {
-                        user && user.email ?
+                        user && user.uid ?
 
                             <Nav>
                                 {/* <Link className='route' to="/log">Log Out</Link> */}

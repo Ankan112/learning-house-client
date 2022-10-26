@@ -9,6 +9,7 @@ const Home = () => {
         <div>
             <h1>this is home page</h1>
             <p>{user?.email}</p>
+            <p>Name:{user?.displayName}</p>
             <Toggle></Toggle>
         </div>
     );
