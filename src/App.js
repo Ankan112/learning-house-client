@@ -3,6 +3,7 @@ import './App.css';
 import Main from './layout/Main/Main';
 import Blog from './pages/Blog/Blog';
 import Courses from './pages/Courses/Courses';
+import CoursesInfo from './pages/CoursesInfo/CoursesInfo';
 import FAQ from './pages/FAQ/FAQ';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
@@ -20,7 +21,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/courses',
-        element: <Courses></Courses>
+        element: <Courses></Courses>,
+        loader: () => {
+          return fetch('http://localhost:5000/courses');
+        }
+
+      },
+      {
+        path: '/courses/:id',
+        element: <CoursesInfo></CoursesInfo>,
+        loader: ({ params }) => {
+          return fetch(`http://localhost:5000/courses/${params.id}`);
+        }
+
       },
       {
         path: '/faq',

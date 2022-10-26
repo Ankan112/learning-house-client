@@ -1,0 +1,15 @@
+.items {
+    text-decoration: none;
+    color: white;
+
+}
+
+.items:hover {
+    color: rgba(255, 255, 255, 0.589);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.589); */
+}
+
+.items-name {
+    background-color: black;
+    padding: 20px 0;
+}
