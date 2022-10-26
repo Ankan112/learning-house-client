@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 import { GoogleAuthProvider } from "firebase/auth";
@@ -24,10 +25,11 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                toast.success('Login Successfully')
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.error(error)
+                toast.error(error.message)
             })
     }
     const handleGoogle = () => {
@@ -38,7 +40,7 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.error(error)
+                toast.error(error.message)
             })
     }
     return (

@@ -9,7 +9,7 @@ import './Navigation.css'
 const Navigation = () => {
     const { user, logOut } = useContext(AuthContext);
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
             <Container>
                 <Navbar.Brand>Learning House</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

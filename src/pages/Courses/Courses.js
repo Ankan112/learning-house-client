@@ -9,7 +9,7 @@ const Courses = () => {
     return (
         <div>
             <div className='row text-center'>
-                <div className='col-4 bg-secondary pt-5'>
+                <div className='col-12 col-md-4 bg-secondary pt-5'>
                     {
                         courses.map(course => <div
                             key={course.id}
@@ -18,8 +18,8 @@ const Courses = () => {
                         </div>)
                     }
                 </div>
-                <div className='col-8 row d-flex justify-content-center'>
-
+                <div className='col-12 col-md-8 row d-flex justify-content-center'>
+                    <h2 className='mt-2'>Make Yourself Better</h2>
                     {
                         courses.map(course => <Card
                             key={course.id}

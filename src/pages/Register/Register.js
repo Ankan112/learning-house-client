@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 import { GoogleAuthProvider } from "firebase/auth";
@@ -18,18 +19,20 @@ const Register = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
+        const url = form.url.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password, name);
+        console.log(email, password, name, url);
         form.reset();
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('Registaion Successful')
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.error(error)
+                toast.error(error.message);
             })
     }
 
@@ -41,7 +44,7 @@ const Register = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.error(error)
+                toast.error(error.message)
             })
     }
     return (
@@ -52,6 +55,10 @@ const Register = () => {
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Your Name</Form.Label>
                         <Form.Control name='name' type="text" placeholder="Enter name" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPhotoURL">
+                        <Form.Label>Photo URL</Form.Label>
+                        <Form.Control name='url' type="text" placeholder="Enter photo url" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
