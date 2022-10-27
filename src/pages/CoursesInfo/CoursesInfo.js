@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 
 const CoursesInfo = () => {
     const course = useLoaderData();
-    const { name, img, price, liveclass, modeltest } = course;
+    const { name, img, price, liveclass, modeltest, id } = course;
     return (
         <div className='container my-5 d-flex justify-content-center'>
             <Card className='' style={{ width: '28rem' }}>
@@ -20,10 +20,9 @@ const CoursesInfo = () => {
                     <ListGroup.Item>Total {modeltest}</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
-                    <Button variant="primary">Download Now</Button> <br />
+
+                    <Link to={`/checkout/${id}`}><Button variant="primary">Get Access</Button> </Link><br />
                     <Link to='/courses'>Go Back</Link>
-                    <Card.Link href="#">Card Link</Card.Link>
-                    <Card.Link href="#">Another Link</Card.Link>
                 </Card.Body>
             </Card>
         </div>

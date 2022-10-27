@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Main from './layout/Main/Main';
 import Blog from './pages/Blog/Blog';
+import CheckOut from './pages/CheckOut/CheckOut';
 import Courses from './pages/Courses/Courses';
 import CoursesInfo from './pages/CoursesInfo/CoursesInfo';
 import FAQ from './pages/FAQ/FAQ';
@@ -30,9 +31,17 @@ const router = createBrowserRouter([
       },
       {
         path: '/courses/:id',
-        element: <PrivateRoute><CoursesInfo></CoursesInfo></PrivateRoute>,
+        element: <CoursesInfo></CoursesInfo>,
         loader: ({ params }) => {
           return fetch(`http://localhost:5000/courses/${params.id}`);
+        }
+
+      },
+      {
+        path: '/checkout/:id',
+        element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+        loader: ({ params }) => {
+          return fetch(`http://localhost:5000/checkout/${params.id}`);
         }
 
       },
