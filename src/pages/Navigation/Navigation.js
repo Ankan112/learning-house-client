@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 import { FaRegUserCircle } from 'react-icons/fa';
 import './Navigation.css'
+import Toggle from '../../Toggle/Toggle';
 
 const Navigation = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -30,14 +31,15 @@ const Navigation = () => {
                         <Link className='route' to="/blog">Blog</Link>
 
                     </Nav>
+
                     {
                         user && user.uid ?
 
-                            <Nav className='md:d-flex md:align-items-center'>
-                                <div style={{ cursor: 'pointer' }} title={user.displayName}>
+                            <Nav className=''>
+                                <div className='md:d-flex md:align-items-center' style={{ cursor: 'pointer' }} title={user.displayName}>
                                     {
                                         user.email ?
-                                            <img style={{ width: '30px', height: '30px', borderRadius: '50%' }} src={user.photoURL} alt="" />
+                                            <img style={{ width: '22px', height: '22px', borderRadius: '50%' }} src={user.photoURL} alt="" />
                                             :
                                             <FaRegUserCircle className='icon' />
                                     }
@@ -47,11 +49,12 @@ const Navigation = () => {
                             </Nav>
                             :
                             <Nav>
-                                <Link className='route' to="/blog">Toggle</Link>
+
                                 <Link className='route' to="/login">Log In</Link>
                             </Nav>
                     }
 
+                    <span className='route me-3'>Dark Mode</span> <Toggle></Toggle>
 
                 </Navbar.Collapse>
             </Container>

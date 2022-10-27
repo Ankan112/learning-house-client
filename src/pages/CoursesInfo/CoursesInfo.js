@@ -13,6 +13,7 @@ const CoursesInfo = () => {
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
+                    <p>Online education enables the teacher and the student to set their own learning pace, and there's the added flexibility of setting a schedule that fits everyone's agenda.</p>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                     <ListGroup.Item> <b>Total {price} Taka</b> </ListGroup.Item>
