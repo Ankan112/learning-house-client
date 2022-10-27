@@ -18,7 +18,6 @@ const CheckOut = () => {
     }
     return (
         <div className='container'>
-            <h1>Header</h1>
             <div className='d-flex justify-content-center my-4'>
                 <Form onSubmit={handleOrderForm} className='w-75'>
                     <Form.Group className="mb-3" controlId="formBasicName">

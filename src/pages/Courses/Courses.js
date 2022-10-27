@@ -9,7 +9,7 @@ const Courses = () => {
     return (
         <div>
             <div className='row text-center'>
-                <div className='col-12 col-md-4 bg-secondary pt-5'>
+                <div className='col-12 col-md-4 left-side pt-5'>
                     {
                         courses.map(course => <div
                             key={course.id}
@@ -28,11 +28,12 @@ const Courses = () => {
                             <Card.Img variant="top" src={course.img} />
                             <Card.Body>
                                 <Card.Title>{course.name}</Card.Title>
+                                <p>Total Price {course.price} Taka</p>
                                 {/* <Card.Text>
                                     Some quick example text to build on the card title and make up the
                                     bulk of the card's content.
                                 </Card.Text> */}
-                                <Link className='items' to={`/courses/${course.id}`}><Button variant="primary">Check Details</Button></Link>
+                                <Link className='items mt-3' to={`/courses/${course.id}`}><Button variant="primary">Check Details</Button></Link>
                             </Card.Body>
                         </Card>)
                     }
