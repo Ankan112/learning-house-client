@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         path: '/courses',
         element: <Courses></Courses>,
         loader: () => {
-          return fetch('http://localhost:5000/courses');
+          return fetch('https://server-final-project.vercel.app/courses');
         }
 
       },
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         path: '/courses/:id',
         element: <CoursesInfo></CoursesInfo>,
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/courses/${params.id}`);
+          return fetch(`https://server-final-project.vercel.app/courses/${params.id}`);
         }
 
       },
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         path: '/checkout/:id',
         element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/checkout/${params.id}`);
+          return fetch(`https://server-final-project.vercel.app/checkout/${params.id}`);
         }
 
       },
