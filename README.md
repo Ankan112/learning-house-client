@@ -1,9 +1,9 @@
 
-## Learning Houese
+## Learning House
 
-live link: https://e-learning-house.web.app/
-client site code: https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-Ankan112
-server site code: https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-Ankan112
+* live link: https://e-learning-house.web.app/
+* client site code: https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-Ankan112
+* server site code: https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-Ankan112
 
 
 * Online Course Related Website
